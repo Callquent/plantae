@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Plant {
+  id                String   @id
+  name              String
+  species           String
+  location          String
+  light             String
+  wateringEveryDays Int
+  lastWatered       String
+  notes             String
+  createdAt         String
+  updatedAt         String
+  deletedAt         String?
+
+  photos    Photo[]
+  waterings Watering[]
+}
+
+model Photo {
+  id       String  @id
+  plantId  String
+  position Int     @default(0)
+  file     String
+  date     String
+  health   String?
+  note     String
+  clientId String?
+
+  plant Plant @relation(fields: [plantId], references: [id], onDelete: Cascade)
+
+  @@index([plantId])
+}
+
+model Watering {
+  plantId String
+  date    String
+
+  plant Plant @relation(fields: [plantId], references: [id], onDelete: Cascade)
+
+  @@id([plantId, date])
+}
+
+model Seedling {
+  id              String  @id
+  name            String
+  species         String
+  sownOn          String
+  quantity        Int
+  germinationDays Int
+  location        String
+  notes           String
+  status          String
+  germinatedOn    String?
+  germinatedCount Int?
+  plantId         String?
+  createdAt       String
+  updatedAt       String
+  deletedAt       String?
+
+  photos SeedlingPhoto[]
+}
+
+model SeedlingPhoto {
+  id         String @id
+  seedlingId String
+  position   Int    @default(0)
+  file       String
+  date       String
+  note       String
+
+  seedling Seedling @relation(fields: [seedlingId], references: [id], onDelete: Cascade)
+
+  @@index([seedlingId])
+}
