@@ -4,6 +4,6 @@ next-env.d.ts
 generated
 data/plants.json
 data/seedlings.json
-data/plantes.db
-data/plantes.db-*
+data/base.db
+data/base.db-*
 data/uploads

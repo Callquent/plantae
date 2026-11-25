@@ -22,5 +22,5 @@ les photos sont réduites puis ajoutées au journal avec la date et l'observatio
 - Si le téléphone n'accède pas au PC : pare-feu Windows (réseau privé), « isolation des clients » de la box, adresse du PC à réserver dans la box.
 
 ## Stockage des données
-Les plantes et les semis sont enregistrés dans une base SQLite (Prisma) : `plantes.db`, dans le dossier de données de l'application (`DATA_DIR`, sinon `./data`). Les photos restent des fichiers dans `uploads/`.
+Les plantes et les semis sont enregistrés dans une seule base SQLite (Prisma) : `base.db`, dans le dossier de données de l'application (`DATA_DIR`, sinon `./data`). Avec Triviae, la plateforme crée ce fichier et fournit son adresse dans `DATABASE_URL`, que l'application utilise. Les photos restent des fichiers dans `uploads/`.
 Au tout premier démarrage, les anciens fichiers `plants.json` et `seedlings.json` sont repris automatiquement dans la base ; ils ne sont pas modifiés et servent de sauvegarde.
