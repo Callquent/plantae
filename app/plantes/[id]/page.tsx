@@ -66,6 +66,7 @@ export default async function PlantPage({ params }: { params: Promise<{ id: stri
       >
         <PhotoUploadForm
           action={addPhotosAction.bind(null, plant.id)}
+          today={today}
           withHealth
           notePlaceholder="Feuilles jaunies, nouvelle pousse, parasites…"
           submitLabel="Ajouter au journal"

@@ -120,6 +120,7 @@ export default async function SeedlingPage({ params }: { params: Promise<{ id: s
       <Section id="photos" title="Photos" icon="camera" aside={`${s.photos.length} photo${s.photos.length > 1 ? "s" : ""}`}>
         <PhotoUploadForm
           action={addSeedlingPhotosAction.bind(null, s.id)}
+          today={today}
           notePlaceholder="Premières feuilles, moisissure…"
           submitLabel="Ajouter les photos"
         />

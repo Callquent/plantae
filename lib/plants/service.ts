@@ -8,8 +8,6 @@ import { removePhotoFile, savePhotos } from "@/lib/uploads";
 import { nextWateringISO } from "./status";
 import { parseHealth, parseLight, type Plant, type PlantInput, type PlantPhoto } from "./types";
 
-const CLIENT_ID = /^[A-Za-z0-9-]{8,64}$/;
-
 const lock = <A extends unknown[], R>(task: (...args: A) => Promise<R>) => withLock("plants", task);
 
 /** Historique propre : dates valides, sans doublon, du plus récent au plus ancien. */
@@ -197,36 +195,3 @@ export const removeWatering = lock(async (id: string, date: string): Promise<voi
 });
 
 export const markWatered = (id: string) => addWatering(id, todayISO());
-
-export type DevicePhotoResult = "saved" | "duplicate" | "invalid" | "not-found";
-
-/**
- * Photo envoyée par le téléphone. Si `clientId` est déjà connu pour cette plante (renvoi après une
- * réponse perdue), la photo n'est pas enregistrée une seconde fois : résultat « duplicate ».
- */
-export const addDevicePhoto = lock(
-  async (
-    id: string,
-    file: File,
-    meta: { clientId?: string; date?: string; health?: string; note?: string },
-  ): Promise<DevicePhotoResult> => {
-    const plant = await getPlant(id);
-    if (!plant) return "not-found";
-    const clientId = meta.clientId && CLIENT_ID.test(meta.clientId) ? meta.clientId : undefined;
-    if (clientId && plant.photos.some((ph) => ph.clientId === clientId)) return "duplicate";
-    const [name] = await savePhotos([file]);
-    if (!name) return "invalid";
-    const entry: PlantPhoto = {
-      id: randomUUID(),
-      file: name,
-      date: pastOrToday(meta.date),
-      health: parseHealth(meta.health),
-      note: cleanNote(meta.note),
-      clientId,
-    };
-    plant.photos = newestFirst([entry, ...plant.photos]);
-    plant.updatedAt = nowISO();
-    await saveOne(plant);
-    return "saved";
-  },
-);

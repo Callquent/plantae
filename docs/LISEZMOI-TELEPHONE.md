@@ -1,24 +1,23 @@
-# Mise à jour : photos depuis le téléphone Android
+# Utiliser l'application depuis le téléphone
 
-Le PC héberge l'application, le téléphone l'ouvre par le Wi-Fi de la maison, prend les photos
-et les envoie au PC. Si le PC est injoignable, les photos attendent sur le téléphone et partent
-toutes seules au retour de la connexion (aucun doublon).
+Le PC héberge l'application, le téléphone l'ouvre par le Wi-Fi de la maison. Dans le journal photo d'une plante
+(ou d'un semis), le formulaire propose « Prendre une photo » (appareil photo du téléphone) ou « Choisir des fichiers » ;
+les photos sont réduites puis ajoutées au journal avec la date et l'observation.
 
 ## Installation (sur le PC)
-1. Copiez les fichiers de ce zip dans votre projet (en respectant les dossiers, remplacez les fichiers existants).
-2. `npm install`
-3. `npm run build`
-4. `npm run start`   (écoute sur tout le réseau local ; Windows demandera d'autoriser Node.js : choisissez « Réseaux privés »)
-5. Notez l'adresse du PC sur le réseau local (par exemple http://192.168.1.20:3000).
+1. `npm install`
+2. `npm run build`
+3. `npm run start`   (écoute sur tout le réseau local ; Windows demandera d'autoriser Node.js : choisissez « Réseaux privés »)
+4. Notez l'adresse du PC sur le réseau local (par exemple http://192.168.1.20:3000).
 
-## Sur le téléphone (Android, même Wi-Fi)
-1. Tapez l'adresse du PC dans Chrome.
+## Sur le téléphone (même Wi-Fi)
+1. Tapez l'adresse du PC dans le navigateur.
 2. Chrome, menu ⋮ → « Ajouter à l'écran d'accueil ».
-3. Ouvrez « Mes plantes » → choisissez la plante → « Prendre une photo » → « Envoyer au PC ».
+3. Ouvrez « Mes plantes » → la plante → Journal photo → « Prendre une photo ».
 
 ## À savoir
-- Photos réduites à 2000 px avant envoi (≈1 Mo au lieu de 8).
-- Sans HTTPS, la page de prise de photo ne s'ouvre pas hors connexion au PC si elle n'a pas déjà été chargée ; les photos déjà prises, elles, sont conservées et envoyées plus tard.
+- Photos réduites à 2000 px avant envoi (≈1 Mo au lieu de 8). Le téléphone doit joindre le PC au moment de la prise de photo.
+- Sur ordinateur, « Prendre une photo » ouvre simplement le choix de fichier.
 - Pas de mot de passe : toute personne sur votre Wi-Fi peut ouvrir l'application. Ne l'exposez pas sur Internet.
 - Si le téléphone n'accède pas au PC : pare-feu Windows (réseau privé), « isolation des clients » de la box, adresse du PC à réserver dans la box.
 

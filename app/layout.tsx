@@ -4,7 +4,6 @@ import "@fontsource-variable/instrument-sans/wght-italic.css";
 import "@fontsource/young-serif";
 import "./globals.css";
 import Nav from "@/components/layout/nav";
-import UploadBanner from "@/components/layout/upload-banner";
 
 export const metadata: Metadata = {
   title: "Mes plantes d'intérieur",
@@ -18,7 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr">
       <body className="min-h-screen">
-        <UploadBanner />
         <header className="border-b border-line bg-surface/90">
           <Nav />
         </header>
