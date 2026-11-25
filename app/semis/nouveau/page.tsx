@@ -1,5 +1,5 @@
-import { createSeedlingAction } from "@/lib/seedling-actions";
-import SeedlingForm from "../seedling-form";
+import SeedlingForm from "@/components/seedlings/seedling-form";
+import { createSeedlingAction } from "@/lib/seedlings/actions";
 
 export default function NewSeedlingPage() {
   return (

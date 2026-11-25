@@ -1,5 +1,5 @@
-import { revalidatePath } from "next/cache";
-import { addDevicePhoto } from "@/lib/plants";
+import { addDevicePhoto } from "@/lib/plants/service";
+import { refreshPlants } from "@/lib/revalidate";
 
 export const dynamic = "force-dynamic";
 
@@ -36,9 +36,6 @@ export async function POST(request: Request) {
   if (result === "not-found") return reply(404, { status: result });
   if (result === "invalid") return reply(400, { status: result });
 
-  if (result === "saved") {
-    revalidatePath("/plantes");
-    revalidatePath(`/plantes/${plantId}`);
-  }
+  if (result === "saved") refreshPlants(plantId);
   return reply(200, { status: result });
 }

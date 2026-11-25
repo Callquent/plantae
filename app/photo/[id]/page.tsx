@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPlant, todayISO } from "@/lib/plants";
-import { Icon } from "../../icons";
-import CaptureForm from "./capture-form";
+import CaptureForm from "@/components/photos/capture-form";
+import { Icon } from "@/components/ui/icons";
+import { todayISO } from "@/lib/dates";
+import { getPlant } from "@/lib/plants/service";
 
 export const dynamic = "force-dynamic";
 

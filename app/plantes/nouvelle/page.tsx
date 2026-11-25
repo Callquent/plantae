@@ -1,5 +1,5 @@
-import { createPlantAction } from "@/lib/actions";
-import PlantForm from "../../plant-form";
+import PlantForm from "@/components/plants/plant-form";
+import { createPlantAction } from "@/lib/plants/actions";
 
 export default function NewPlantPage() {
   return (

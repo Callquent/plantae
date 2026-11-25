@@ -3,8 +3,8 @@ import "@fontsource-variable/instrument-sans";
 import "@fontsource-variable/instrument-sans/wght-italic.css";
 import "@fontsource/young-serif";
 import "./globals.css";
-import Nav from "./nav";
-import UploadBanner from "./upload-banner";
+import Nav from "@/components/layout/nav";
+import UploadBanner from "@/components/layout/upload-banner";
 
 export const metadata: Metadata = {
   title: "Mes plantes d'intérieur",

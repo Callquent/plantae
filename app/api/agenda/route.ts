@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
-import { agendaEvents, parseRange } from "@/lib/agenda-feed";
-import { listPlants, todayISO } from "@/lib/plants";
-import { listSeedlings } from "@/lib/seedlings";
+import { agendaEvents, parseRange } from "@/lib/calendar/agenda-feed";
+import { todayISO } from "@/lib/dates";
+import { listPlants } from "@/lib/plants/service";
+import { listSeedlings } from "@/lib/seedlings/service";
 
 export const dynamic = "force-dynamic";
 

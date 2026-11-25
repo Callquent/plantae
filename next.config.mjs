@@ -26,9 +26,9 @@ const nextConfig = {
   ...(process.env.STANDALONE ? { output: "standalone" } : {}),
   env: { NEXT_PUBLIC_BASE_PATH: basePath },
   // Le client Prisma est empaqueté dans l'application (JavaScript pur) ; l’adaptateur SQLite est chargé
-  // par lib/db.ts directement depuis node_modules.
+  // par lib/db/client.ts directement depuis node_modules.
   transpilePackages: ["@prisma/client"],
-  // Les modules de SQLite sont chargés par lib/db.ts hors du paquet compilé : on les ajoute, avec toutes
+  // Les modules de SQLite sont chargés par lib/db/client.ts hors du paquet compilé : on les ajoute, avec toutes
   // leurs dépendances installées (dont le binaire propre à la machine), à la version autonome.
   outputFileTracingIncludes: { "/**": sqliteFiles() },
   experimental: {
